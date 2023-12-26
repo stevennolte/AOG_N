@@ -743,14 +743,14 @@ namespace AgOpenGPS
                 oglMain.Height = this.Height - 120;
             }
 
-            if (tool.isSectionsNotZones)
-            {
-                LineUpIndividualSectionBtns();
-            }
-            else
-            {
-                LineUpAllZoneButtons();
-            }
+            //if (tool.isSectionsNotZones)
+            //{
+            //    LineUpIndividualSectionBtns();
+            //}
+            //else
+            //{
+            //    LineUpAllZoneButtons();
+            //}
         }
 
         public void SaveFormGPSWindowSettings()

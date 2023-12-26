@@ -239,7 +239,24 @@ namespace AgOpenGPS
             }
         }
 
+
+        public class CPGN_65
+        {
+            public byte[] pgn = new byte[] { 0x80, 0x81, 0x7f, 0x65, 12,
+                                        0, 0, 0, 0, 0, 0, 0, 0,
+                                        0, 0, 0, 0, 0xCC };
+            public int sprayEnabled = 5;
+            public int targetRate = 6;
+            public int autoBoomEnable = 7;
+            public int section1Enable = 8;
+            public int section2Enable = 9;
+            public int section3Enable = 10;
+            public int section4Enable = 11;
+            public int section5Enable = 12;
+            
+        }
         //Relay Config
+        
         public class CPGN_EC
         {
             /// <summary>
@@ -459,6 +476,7 @@ namespace AgOpenGPS
         /// </summary>
         public CPGN_EC p_236 = new CPGN_EC();
 
+        public CPGN_65 p_101 = new CPGN_65();
         /// <summary>
         /// Section dimensions PGN - 235 - EB
         /// </summary>

@@ -1,5 +1,6 @@
 ﻿//Please, if you use this, share the improvements
 
+using AgOpenGPS.Forms;
 using AgOpenGPS.Properties;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
@@ -207,6 +208,14 @@ namespace AgOpenGPS
         /// Resource manager for gloabal strings
         /// </summary>
         public ResourceManager _rm;
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormSpray form = new FormSpray(this);
+            
+                form.Show();
+            
+        }
 
         /// <summary>
         /// Heading, Roll, Pitch, GPS, Properties
@@ -1095,10 +1104,11 @@ namespace AgOpenGPS
             btnYouSkipEnable.Visible = false;
             btnEditAB.Visible = false;
         }
-
+        
         //take the distance from object and convert to camera data
         public void SetZoom()
         {
+            
             //match grid to cam distance and redo perspective
             if (camera.camSetDistance > -50 ) camera.gridZoom = 10;
             else if (camera.camSetDistance > -150 ) camera.gridZoom = 20;

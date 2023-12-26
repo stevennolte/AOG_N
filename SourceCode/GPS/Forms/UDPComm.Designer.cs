@@ -256,7 +256,14 @@ namespace AgOpenGPS
                             mc.sensorData = data[5];
                             break;
                         }
-
+                    
+                    //Report back from Sprayer
+                    case 0xFB:
+                        {
+                            //Debug.WriteLine("");
+                            tool.section1FlowRate = data[7];
+                            break;
+                        }
                     #region Remote Switches
                     case 234://MTZ8302 Feb 2020
                         {

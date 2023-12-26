@@ -404,7 +404,7 @@ namespace AgOpenGPS
                     }
 
                     // 2D Ortho ---------------------------------------////////-------------------------------------------------
-
+                    
                     GL.MatrixMode(MatrixMode.Projection);
                     GL.PushMatrix();
                     GL.LoadIdentity();
@@ -487,6 +487,7 @@ namespace AgOpenGPS
                         SendPgnToLoop(p_239.pgn);
                         if (!tool.isSectionsNotZones)
                             SendPgnToLoop(p_229.pgn);
+                        SendPgnToLoop(p_101.pgn);
                     }
 
                     //draw the zoom window
@@ -729,7 +730,7 @@ namespace AgOpenGPS
 
             //read the whole block of pixels up to max lookahead, one read only
             GL.ReadPixels(tool.rpXPosition, 0, tool.rpWidth, (int)rpHeight, OpenTK.Graphics.OpenGL.PixelFormat.Green, PixelType.UnsignedByte, grnPixels);
-
+            
             //Paint to context for troubleshooting
             //oglBack.MakeCurrent();
             //oglBack.SwapBuffers();
@@ -791,7 +792,7 @@ namespace AgOpenGPS
             int endHeight = 1, startHeight = 1;
 
             if (bnd.isHeadlandOn && bnd.isSectionControlledByHeadland) bnd.WhereAreToolLookOnPoints();
-            progressBar1.Value = Convert.ToByte(tool.farLeftSpeed);
+
             for (int j = 0; j < tool.numOfSections; j++)
             {
                 //Off or too slow or going backwards
@@ -1141,7 +1142,7 @@ namespace AgOpenGPS
                         }
                     }
                 }
-
+                
 
                 lastNumber = number;
             }        

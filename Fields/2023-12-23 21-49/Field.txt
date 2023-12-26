@@ -1,9 +1,0 @@
-2023-December-23 09:49:52 PM
-$FieldDir
-FieldNew
-$Offsets
-0,0
-Convergence
-0
-StartFix
-0.0115265318079873,-0.0255678757768671

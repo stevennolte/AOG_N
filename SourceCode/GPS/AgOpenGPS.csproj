@@ -74,6 +74,12 @@
   <PropertyGroup />
   <PropertyGroup />
   <ItemGroup>
+    <Reference Include="AGauge, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AGauge.2.0.1\lib\NET451\AGauge.dll</HintPath>
+    </Reference>
+    <Reference Include="CodeArtEng.Gauge, Version=3.1.1.100, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeArtEng.Gauge.3.1.1.100\lib\net48\CodeArtEng.Gauge.dll</HintPath>
+    </Reference>
     <Reference Include="ColorPicker, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\ColorPicker.dll</HintPath>
@@ -85,6 +91,9 @@
     <Reference Include="Keypad, Version=5.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Keypad.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.Build.Utilities.v4.0" />
@@ -103,6 +112,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -172,6 +182,12 @@
     </Compile>
     <Compile Include="CustomControl1.Designer.cs">
       <DependentUpon>CustomControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSpray.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSpray.Designer.cs">
+      <DependentUpon>FormSpray.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormFieldKML.cs">
       <SubType>Form</SubType>
@@ -594,6 +610,9 @@
       <DependentUpon>FormGPS.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\vec3.cs" />
+    <EmbeddedResource Include="Forms\FormSpray.resx">
+      <DependentUpon>FormSpray.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormFieldKML.resx">
       <DependentUpon>FormFieldKML.cs</DependentUpon>
     </EmbeddedResource>

@@ -15,7 +15,7 @@ namespace AgOpenGPS
         public double farLeftSpeed = 0;
         public double farRightPosition = 0;
         public double farRightSpeed = 0;
-
+        
         public double overlap;
         public double trailingHitchLength, tankTrailingHitchLength;
         public double offset;
@@ -52,6 +52,23 @@ namespace AgOpenGPS
 
         public int zones;
         public int[] zoneRanges = new int[9];
+
+        //Sprayer values
+        public int toolEnable = 0;
+        public int autoBoomEnable = 0;
+        public double targetRate = 0;
+        //Sprayer returned values
+        public double mainFlowRate = 0;
+        public double section1FlowRate = 0;
+        public double section2FlowRate = 0;
+        public double section3FlowRate = 0;
+        public double section4FlowRate = 0;
+        public double section5FlowRate = 0;
+
+
+
+
+
 
         //Constructor called by FormGPS
         public CTool(FormGPS _f)
@@ -113,6 +130,7 @@ namespace AgOpenGPS
             {
                 zoneRanges[i] = int.Parse(words[i]);
             }
+            
         }
 
         public void DrawTool()
