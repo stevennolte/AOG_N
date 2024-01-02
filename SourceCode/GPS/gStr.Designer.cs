@@ -178,15 +178,6 @@ namespace AgOpenGPS {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Boundary Contour.
-        /// </summary>
-        public static string gsBoundaryMenu {
-            get {
-                return ResourceManager.GetString("gsBoundaryMenu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to But Field Is Loaded.
         /// </summary>
         public static string gsButFieldIsLoaded {
@@ -201,15 +192,6 @@ namespace AgOpenGPS {
         public static string gsCentimeters {
             get {
                 return ResourceManager.GetString("gsCentimeters", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Charts.
-        /// </summary>
-        public static string gsCharts {
-            get {
-                return ResourceManager.GetString("gsCharts", resourceCulture);
             }
         }
         
@@ -403,24 +385,6 @@ namespace AgOpenGPS {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Distance.
-        /// </summary>
-        public static string gsDistance {
-            get {
-                return ResourceManager.GetString("gsDistance", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Drive In.
-        /// </summary>
-        public static string gsDriveIn {
-            get {
-                return ResourceManager.GetString("gsDriveIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Drive Thru.
         /// </summary>
         public static string gsDriveThru {
@@ -462,15 +426,6 @@ namespace AgOpenGPS {
         public static string gsEditABLine {
             get {
                 return ResourceManager.GetString("gsEditABLine", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Edit Field Name.
-        /// </summary>
-        public static string gsEditFieldName {
-            get {
-                return ResourceManager.GetString("gsEditFieldName", resourceCulture);
             }
         }
         
@@ -529,15 +484,6 @@ namespace AgOpenGPS {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Field.
-        /// </summary>
-        public static string gsField {
-            get {
-                return ResourceManager.GetString("gsField", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Field File is Corrupt.
         /// </summary>
         public static string gsFieldFileIsCorrupt {
@@ -592,42 +538,6 @@ namespace AgOpenGPS {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to From Existing.
-        /// </summary>
-        public static string gsFromExisting {
-            get {
-                return ResourceManager.GetString("gsFromExisting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to From KML.
-        /// </summary>
-        public static string gsFromKml {
-            get {
-                return ResourceManager.GetString("gsFromKml", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Guidance Stopped.
-        /// </summary>
-        public static string gsGuidanceStopped {
-            get {
-                return ResourceManager.GetString("gsGuidanceStopped", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Heading Chart.
-        /// </summary>
-        public static string gsHeadingChart {
-            get {
-                return ResourceManager.GetString("gsHeadingChart", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Headland.
         /// </summary>
         public static string gsHeadland {
@@ -651,15 +561,6 @@ namespace AgOpenGPS {
         public static string gsHelp {
             get {
                 return ResourceManager.GetString("gsHelp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to If Wrong Direction Tap Vehicle.
-        /// </summary>
-        public static string gsIfWrongDirectionTapVehicle {
-            get {
-                return ResourceManager.GetString("gsIfWrongDirectionTapVehicle", resourceCulture);
             }
         }
         
@@ -880,15 +781,6 @@ namespace AgOpenGPS {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Settings With IMU.
-        /// </summary>
-        public static string gsNoSettingsWithIMU {
-            get {
-                return ResourceManager.GetString("gsNoSettingsWithIMU", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Nothing Deleted.
         /// </summary>
         public static string gsNothingDeleted {
@@ -961,15 +853,6 @@ namespace AgOpenGPS {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Past End Of Curve.
-        /// </summary>
-        public static string gsPastEndOfCurve {
-            get {
-                return ResourceManager.GetString("gsPastEndOfCurve", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Pause.
         /// </summary>
         public static string gsPause {
@@ -1038,15 +921,6 @@ namespace AgOpenGPS {
         public static string gsRecordedPathFileIsCorrupt {
             get {
                 return ResourceManager.GetString("gsRecordedPathFileIsCorrupt", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Recorded Path.
-        /// </summary>
-        public static string gsRecordedPathMenu {
-            get {
-                return ResourceManager.GetString("gsRecordedPathMenu", resourceCulture);
             }
         }
         
@@ -1150,15 +1024,6 @@ namespace AgOpenGPS {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Slow Down Below.
-        /// </summary>
-        public static string gsSlowDownBelow {
-            get {
-                return ResourceManager.GetString("gsSlowDownBelow", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Smooth AB Curve.
         /// </summary>
         public static string gsSmoothABCurve {
@@ -1222,15 +1087,6 @@ namespace AgOpenGPS {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Steer Wizard.
-        /// </summary>
-        public static string gsSteerWizard {
-            get {
-                return ResourceManager.GetString("gsSteerWizard", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Stop Record Pause Boundary.
         /// </summary>
         public static string gsStopRecordPauseBoundary {
@@ -1245,15 +1101,6 @@ namespace AgOpenGPS {
         public static string gsToFile {
             get {
                 return ResourceManager.GetString("gsToFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Too Fast.
-        /// </summary>
-        public static string gsTooFast {
-            get {
-                return ResourceManager.GetString("gsTooFast", resourceCulture);
             }
         }
         
@@ -1317,24 +1164,6 @@ namespace AgOpenGPS {
         public static string gsWest {
             get {
                 return ResourceManager.GetString("gsWest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wizards.
-        /// </summary>
-        public static string gsWizards {
-            get {
-                return ResourceManager.GetString("gsWizards", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to XTE Chart.
-        /// </summary>
-        public static string gsXTEChart {
-            get {
-                return ResourceManager.GetString("gsXTEChart", resourceCulture);
             }
         }
         
@@ -1630,7 +1459,7 @@ namespace AgOpenGPS {
         ///   Looks up a localized string similar to Stanley or Pure Pursuit Steering Mode
         ///
         ///Select the mode you wish to use. Stanley uses the front of the vehicle to reference how quickly to steer to the line. The pivot just follows along trailing not on the line. Good for a swather or harvester, but not so good for attached tools. 
-        ///Pure Pursuit uses the pivot point to determine steering corrections and tries to correct heading and off track error to get on the line. The integral also varies heading to force the pivot to the line so on slopes or side draft it [rest of string was truncated]&quot;;.
+        ///Pure Pursuit uses the pivot point to determine steering corrections and tries to correct heading and off track error to get on the line. The integral also varies heading to force the pivot to the line so on slopes or side draft [rest of string was truncated]&quot;;.
         /// </summary>
         public static string h_btnStanleyPure {
             get {
@@ -1767,7 +1596,7 @@ namespace AgOpenGPS {
         ///The setting is based on reference of the right wheel where the left wheel angle is determined by multiplying the steering wheel angle by the percentage Ackermann is set to. 
         ///Ackermann has no effect on steer angle when turning right, only left.
         ///
-        ///Example. Ackerm [rest of string was truncated]&quot;;.
+        ///Exampl [rest of string was truncated]&quot;;.
         /// </summary>
         public static string h_hsbarAckerman {
             get {
@@ -1818,17 +1647,6 @@ namespace AgOpenGPS {
         public static string h_hsbarHighSteerPWM {
             get {
                 return ResourceManager.GetString("h_hsbarHighSteerPWM", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hold Look Ahead Slider
-        ///
-        ///How far ahead the algorithm looks to at the reference point to decide if it is wandering off line. When distance to line is &lt;10cm, system is in &quot;Hold&quot; mode. Otherwise, it is acquiring. If it is slow to realise it is losing the line, decrease this. If it constantly over-correcting at less than 10cm, increase this..
-        /// </summary>
-        public static string h_hsbarHoldLookAhead {
-            get {
-                return ResourceManager.GetString("h_hsbarHoldLookAhead", resourceCulture);
             }
         }
         
@@ -1933,7 +1751,7 @@ namespace AgOpenGPS {
         ///However, if it is too high, the steering will overshoot the line and
         ///then oversteer the other way again called oscillate. Too low of a value and it will
         ///either take too long or never get to the guidance line. A critical setting that 
-        ///takes some experimenting to see its effect. All 4 of [rest of string was truncated]&quot;;.
+        ///takes some experimenting to see its effect.  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string h_hsbarProportionalGain {
             get {
@@ -2058,7 +1876,7 @@ namespace AgOpenGPS {
         /// <summary>
         ///   Looks up a localized string similar to Swap Direction Touch
         ///
-        ///Touch here if the vehicle is pointing backwards while travelling forwards. Without dual heading you don&apos;t know if you are backing up or going forward. Backing up is position to position like going forward but 180 degrees is added to your heading to make it look like you are backing up. At times, like turning sharp when going slow the direction can get confused and this resets that direction. Drive forward and touch this area to tell AOG which way forward is. Can be touched at any time..
+        ///Touch here if the vehicle is pointing backwards while travelling forwards. Without dual heading you don&apos;t know if you are backing up or going forward. Backing up is position to position like going forward but 180 degrees is added to your heading to make it look like you are backing up. At times, like turning sharp when going slow the direction can get confused and this resets that direction. Drive forward and touch this area to tell AOG which way forward is. Can be touched at any tim [rest of string was truncated]&quot;;.
         /// </summary>
         public static string h_lblVehicleDirectionResetTouch {
             get {
@@ -2687,7 +2505,7 @@ namespace AgOpenGPS {
         ///
         ///Note... Any type switch or button can be configured to do either method. The Switch setting is most common for steer motors that just push on a switch when engaged and then when released simply opens the switch again.
         ///
-        ///The button setting is more common for hydraulic as you  [rest of string was truncated]&quot;;.
+        ///The button setting is more common for hydraul [rest of string was truncated]&quot;;.
         /// </summary>
         public static string hc_cboxSteerEnable {
             get {
@@ -2856,7 +2674,7 @@ namespace AgOpenGPS {
         ///
         ///The GPS is quite stable over a longer time period while the IMU is very stable short term but drifts to some funky angle over time. 
         ///
-        ///If too much IMU is set, then making sharp turns etc can take a long time to correct by the GPS and will cause steering to be in the wrong heading. Too much GPS and the heading will be noisy back and forth causin [rest of string was truncated]&quot;;.
+        ///If too much IMU is set, then making sharp turns etc can take a long time to correct by the GPS and will cause steering to be in the wrong heading. Too much GPS and the heading will be noisy back and forth  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string hc_hsbarFusion {
             get {
@@ -2948,7 +2766,7 @@ namespace AgOpenGPS {
         ///
         ///What you are doing is offsetting the effect that the antenna swings very quickly left or right when you initially turn the steering wheel. This tries to dampen that effect. It is very complex to eliminate. There is much less of this effect when going forward so best just to leave the setting as is. 
         ///
-        ///You can use the steering chart fr [rest of string was truncated]&quot;;.
+        ///You can use the steering ch [rest of string was truncated]&quot;;.
         /// </summary>
         public static string hc_nudForwardComp {
             get {
@@ -3060,7 +2878,7 @@ namespace AgOpenGPS {
         ///
         ///Heading is determined by taking 2 points and calculating an angle. The slower you go, the more variation side to side there is, more noise, etc make the heading quite unstable to just go from last point to current point. OK when going fast. AOG remembers several points back in time for this purpose. The Step Distance is how far back in that history of points do you want to use to calculate the heading.
         ///
-        ///A long step distance provides quite a stable reading BUT there is  [rest of string was truncated]&quot;;.
+        ///A long step distance provides quite a stable reading BUT there [rest of string was truncated]&quot;;.
         /// </summary>
         public static string hc_nudMinFixStepDistance {
             get {
@@ -3073,7 +2891,7 @@ namespace AgOpenGPS {
         ///
         ///Set in milliseconds. If GPS is 10 hz then a single update takes 100 msec between new position updates. In this case the elapsed time would be zero since a new one arrives every 100 msec. 
         ///
-        ///If you set it to 70 then the elapsed time would wait for another 70 msec - or 170 msec total - before a missed update would occur. These missed updates get counted and show up by the AGIO button on the left side. A few misses happen because windows is busy, or bringing up the Config settings because Wi [rest of string was truncated]&quot;;.
+        ///If you set it to 70 then the elapsed time would wait for another 70 msec - or 170 msec total - before a missed update would occur. These missed updates get counted and show up by the AGIO button on the left side. A few misses happen because windows is busy, or bringing up the Config settings becaus [rest of string was truncated]&quot;;.
         /// </summary>
         public static string hc_nudMinimumFrameTime {
             get {
@@ -3121,7 +2939,7 @@ namespace AgOpenGPS {
         ///
         ///What you are doing is offsetting the effect that the antenna swings very quickly left or right when you initially turn the steering wheel. This tries to dampen that effect. It is very complex to eliminate.
         ///
-        ///The effect is much greater in reverse because the antenna based on direction is behind the antenna. Think of a loader bucket on  [rest of string was truncated]&quot;;.
+        ///The effect is much greater in reverse because the antenna based on direction is behind the antenna. Think of a loader buck [rest of string was truncated]&quot;;.
         /// </summary>
         public static string hc_nudReverseComp {
             get {

@@ -38,7 +38,7 @@ namespace AgIO
         {
             DialogResult result3 = MessageBox.Show(
                 "Overwrite: " + cboxEnv.SelectedItem.ToString() + ".xml",
-                "Save And Return",
+                gStr.gsSaveAndReturn,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
@@ -69,7 +69,7 @@ namespace AgIO
             else
             {
                 _ = MessageBox.Show("Enter a File Name To Save...",
-                "Save And Return", MessageBoxButtons.OK);
+                gStr.gsSaveAndReturn, MessageBoxButtons.OK);
             }
         }
 

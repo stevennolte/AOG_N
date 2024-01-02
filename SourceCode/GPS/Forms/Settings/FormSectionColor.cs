@@ -253,6 +253,16 @@ namespace AgOpenGPS
             else SetGui(false);
         }
 
+        private void cb12_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb11_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void FormSectionColor_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!isClosing)

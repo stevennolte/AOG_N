@@ -29,7 +29,7 @@ namespace AgOpenGPS
 
 
         // 0 off, 1 All, 2, Lines, 3 Outer
-        public int displayMode, generateMode = 0;
+        public int displayMode;
         internal int controlByte;
 
         public CTram(FormGPS _f)
@@ -42,16 +42,10 @@ namespace AgOpenGPS
 
             halfWheelTrack = Properties.Settings.Default.setVehicle_trackWidth * 0.5;
 
-            IsTramOuterOrInner();
+            isOuter = ((int)(tramWidth / mf.tool.width + 0.5)) % 2 == 0;
 
             passes = Properties.Settings.Default.setTram_passes;
             displayMode = 0;
-        }
-
-        public void IsTramOuterOrInner()
-        {
-            isOuter = ((int)(tramWidth / mf.tool.width + 0.5)) % 2 == 0;
-            if (Properties.Settings.Default.setTool_isTramOuterInverted) isOuter = !isOuter;
         }
 
         public void DrawTram()
@@ -145,7 +139,7 @@ namespace AgOpenGPS
                     {
                         double dist = ((pt3.easting - tramBndInnerArr[tramBndInnerArr.Count - 1].easting) * (pt3.easting - tramBndInnerArr[tramBndInnerArr.Count - 1].easting))
                             + ((pt3.northing - tramBndInnerArr[tramBndInnerArr.Count - 1].northing) * (pt3.northing - tramBndInnerArr[tramBndInnerArr.Count - 1].northing));
-                        if (dist > 2)
+                        if (dist > 1)
                             tramBndInnerArr.Add(pt3);
                     }
                     else tramBndInnerArr.Add(pt3);
@@ -193,7 +187,7 @@ namespace AgOpenGPS
                     {
                         double dist = ((pt3.easting - tramBndOuterArr[tramBndOuterArr.Count - 1].easting) * (pt3.easting - tramBndOuterArr[tramBndOuterArr.Count - 1].easting))
                             + ((pt3.northing - tramBndOuterArr[tramBndOuterArr.Count - 1].northing) * (pt3.northing - tramBndOuterArr[tramBndOuterArr.Count - 1].northing));
-                        if (dist > 2)
+                        if (dist > 1)
                             tramBndOuterArr.Add(pt3);
                     }
                     else tramBndOuterArr.Add(pt3);

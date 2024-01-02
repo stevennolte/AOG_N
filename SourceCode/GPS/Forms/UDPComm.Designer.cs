@@ -21,7 +21,7 @@ namespace AgOpenGPS
         private byte[] loopBuffer = new byte[1024];
 
         // Status delegate
-        public int udpWatchCounts = 0;
+        private int udpWatchCounts = 0;
         public int udpWatchLimit = 70;
 
         private readonly Stopwatch udpWatch = new Stopwatch();
@@ -82,9 +82,8 @@ namespace AgOpenGPS
                                 if (temp != float.MaxValue)
                                 {
                                     pn.headingTrueDual = temp + pn.headingTrueDualOffset;
-                                    if (pn.headingTrueDual >= 360) pn.headingTrueDual -= 360;
-                                    else if (pn.headingTrueDual < 0) pn.headingTrueDual += 360;
-                                    if (ahrs.isDualAsIMU) ahrs.imuHeading = pn.headingTrueDual;
+                                    if (pn.headingTrueDual < 0) pn.headingTrueDual += 360;
+                                    if (ahrs.isDualAsIMU) ahrs.imuHeading = temp;
                                 }
 
                                 //from single antenna sentences (VTG,RMC)
@@ -256,14 +255,7 @@ namespace AgOpenGPS
                             mc.sensorData = data[5];
                             break;
                         }
-                    
-                    //Report back from Sprayer
-                    case 0xFB:
-                        {
-                            //Debug.WriteLine("");
-                            tool.section1FlowRate = data[7];
-                            break;
-                        }
+
                     #region Remote Switches
                     case 234://MTZ8302 Feb 2020
                         {
@@ -433,6 +425,8 @@ namespace AgOpenGPS
         //keystrokes for easy and quick startup
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
+
+
             if ((char)keyData == hotkeys[0]) //autosteer button on off
             {
                 btnAutoSteer.PerformClick();
@@ -611,7 +605,7 @@ namespace AgOpenGPS
             //speed up
             if (keyData == Keys.Up)
             {
-                if (sim.stepDistance < 0.04 && sim.stepDistance > -0.04) sim.stepDistance += 0.001;
+                if (sim.stepDistance < 0.04 && sim.stepDistance > -0.04) sim.stepDistance += 0.002;
                 else sim.stepDistance += 0.02;
                 if (sim.stepDistance > 1.9) sim.stepDistance = 1.9;
                 hsbarStepDistance.Value = (int)(sim.stepDistance * 5 * gpsHz);
@@ -621,7 +615,7 @@ namespace AgOpenGPS
             //slow down
             if (keyData == Keys.Down)
             {
-                if (sim.stepDistance < 0.04 && sim.stepDistance > -0.04) sim.stepDistance -= 0.001;
+                if (sim.stepDistance < 0.04 && sim.stepDistance > -0.04) sim.stepDistance -= 0.002;
                 else sim.stepDistance -= 0.02;
                 if (sim.stepDistance < -0.35) sim.stepDistance = -0.35;
                 hsbarStepDistance.Value = (int)(sim.stepDistance * 5 * gpsHz);
@@ -669,27 +663,6 @@ namespace AgOpenGPS
                 hsbarSteerAngle.Value = (int)(10 * sim.steerAngle) + 400;
                 return true;
             }
-
-            if (keyData == Keys.OemOpenBrackets)
-            {
-                sim.stepDistance = 0;
-                sim.isAccelBack = true;
-            }
-
-            if (keyData == Keys.OemCloseBrackets)
-            {
-                sim.stepDistance = 0;
-                sim.isAccelForward = true;
-            }
-
-            if (keyData == Keys.OemQuotes)
-            {
-                sim.stepDistance = 0;
-                hsbarStepDistance.Value = 0;
-                return true;
-            }
-
-
 
             // Call the base class
             return base.ProcessCmdKey(ref msg, keyData);

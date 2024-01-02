@@ -77,7 +77,7 @@ namespace AgOpenGPS
                                 distance *= 100;
 
                                 fileList.Add(fieldDirectory);
-                                fileList.Add(Math.Round(distance, 2).ToString("N2").PadLeft(10));
+                                fileList.Add(Math.Round(distance, 3).ToString().PadLeft(10));
                             }
                             else
                             {
@@ -177,7 +177,7 @@ namespace AgOpenGPS
                         }
                     }
                     if (area == 0) fileList.Add("No Bndry");
-                    else fileList.Add(Math.Round(area, 1).ToString("N1").PadLeft(10));
+                    else fileList.Add(Math.Round(area, 1).ToString().PadLeft(10));
                 }
 
                 else
@@ -208,13 +208,13 @@ namespace AgOpenGPS
 
             if (lvLines.Items.Count > 0)
             {
-                this.chName.Text = gStr.gsField;
+                this.chName.Text = "Field Name";
                 this.chName.Width = 680;
 
-                this.chDistance.Text = gStr.gsDistance;
+                this.chDistance.Text = "Distance";
                 this.chDistance.Width = 140;
 
-                this.chArea.Text = gStr.gsArea;
+                this.chArea.Text = "Area";
                 this.chArea.Width = 140;
             }
             else
@@ -259,36 +259,36 @@ namespace AgOpenGPS
             {
                 if (order == 0)
                 {
-                    this.chName.Text = gStr.gsField;
+                    this.chName.Text = "Field Name";
                     this.chName.Width = 680;
 
-                    this.chDistance.Text = gStr.gsDistance;
+                    this.chDistance.Text = "Distance";
                     this.chDistance.Width = 140;
 
-                    this.chArea.Text = gStr.gsArea;
+                    this.chArea.Text = "Area";
                     this.chArea.Width = 140;
                 }
                 else if (order == 1)
                 {
-                    this.chName.Text = gStr.gsDistance;
+                    this.chName.Text = "Distance";
                     this.chName.Width = 140;
 
-                    this.chDistance.Text = gStr.gsField;
+                    this.chDistance.Text = "Field Name";
                     this.chDistance.Width = 680;
 
-                    this.chArea.Text = gStr.gsArea;
+                    this.chArea.Text = "Area";
                     this.chArea.Width = 140;
                 }
 
                 else
                 {
-                    this.chName.Text = gStr.gsArea;
+                    this.chName.Text = "Area";
                     this.chName.Width = 140;
 
-                    this.chDistance.Text = gStr.gsField;
+                    this.chDistance.Text = "Field Name";
                     this.chDistance.Width = 680;
 
-                    this.chArea.Text = gStr.gsDistance;
+                    this.chArea.Text = "Distance";
                     this.chArea.Width = 140;
                 }
             }
@@ -389,7 +389,7 @@ namespace AgOpenGPS
                                 distance *= 100;
 
                                 fileList.Add(fieldDirectory);
-                                fileList.Add(Math.Round(distance, 2).ToString("N2").PadLeft(10));
+                                fileList.Add(Math.Round(distance, 3).ToString().PadLeft(10));
                             }
                             else
                             {
@@ -487,7 +487,7 @@ namespace AgOpenGPS
                             }
                         }
                         if (area == 0) fileList.Add("No Bndry");
-                        else fileList.Add(Math.Round(area, 1).ToString("N1").PadLeft(10));
+                        else fileList.Add(Math.Round(area, 1).ToString().PadLeft(10));
                     }
 
                     else
@@ -513,13 +513,13 @@ namespace AgOpenGPS
 
             if (lvLines.Items.Count > 0)
             {
-                this.chName.Text = gStr.gsField;
+                this.chName.Text = "Field Name";
                 this.chName.Width = 680;
 
-                this.chDistance.Text = gStr.gsDistance;
+                this.chDistance.Text = "Distance";
                 this.chDistance.Width = 140;
 
-                this.chArea.Text = gStr.gsArea;
+                this.chArea.Text = "Area";
                 this.chArea.Width = 140;
             }
             else
@@ -528,6 +528,5 @@ namespace AgOpenGPS
                 //form2.Show(this);
             }
         }
-
     }
 }

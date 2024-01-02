@@ -1,6 +1,5 @@
 ﻿//Please, if you use this, share the improvements
 
-using AgOpenGPS.Forms;
 using AgOpenGPS.Properties;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
@@ -119,8 +118,7 @@ namespace AgOpenGPS
         //used by filePicker Form to return picked file and directory
         public string filePickerFileAndDirectory;
 
-        //the position of the GPS Data window within the FormGPS window
-        public int GPSDataWindowLeft = 76, GPSDataWindowTopOffset = 160;
+        //private int fiveSecondCounter = 0, fiveSeconds = 0;
 
         //the autoManual drive button. Assume in Auto
         public bool isInAutoDrive = true;
@@ -208,14 +206,6 @@ namespace AgOpenGPS
         /// Resource manager for gloabal strings
         /// </summary>
         public ResourceManager _rm;
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FormSpray form = new FormSpray(this);
-            
-                form.Show();
-            
-        }
 
         /// <summary>
         /// Heading, Roll, Pitch, GPS, Properties
@@ -422,37 +412,11 @@ namespace AgOpenGPS
                 }
             }
 
-            if (isBrightnessOn)
+            if (displayBrightness.isWmiMonitor)
             {
-                if (displayBrightness.isWmiMonitor)
-                {
-                    Settings.Default.setDisplay_brightnessSystem = displayBrightness.GetBrightness();
-                    Settings.Default.Save();
-                }
-                else
-                {
-                    btnBrightnessDn.Enabled = false;
-                    btnBrightnessUp.Enabled = false;
-                }
-
-                //display brightness
-                if (displayBrightness.isWmiMonitor)
-                {
-                    if (Settings.Default.setDisplay_brightness < Settings.Default.setDisplay_brightnessSystem)
-                    {
-                        Settings.Default.setDisplay_brightness = Settings.Default.setDisplay_brightnessSystem;
-                        Settings.Default.Save();
-                    }
-
-                    displayBrightness.SetBrightness(Settings.Default.setDisplay_brightness);
-                }
-                else
-                {
-                    btnBrightnessDn.Enabled = false;
-                    btnBrightnessUp.Enabled = false;
-                }
+                Settings.Default.setDisplay_brightnessSystem = displayBrightness.GetBrightness();
+                Settings.Default.Save();
             }
-
 
 
             // load all the gui elements in gui.designer.cs
@@ -520,7 +484,7 @@ namespace AgOpenGPS
 
             resetEverythingToolStripMenuItem.Text = gStr.gsResetAllForSure;
 
-            steerChartStripMenu.Text = gStr.gsCharts;
+            steerChartStripMenu.Text = gStr.gsSteerChart;
 
             //Tools Menu
             SmoothABtoolStripMenu.Text = gStr.gsSmoothABCurve;
@@ -529,17 +493,8 @@ namespace AgOpenGPS
             deleteContourPathsToolStripMenuItem.Text = gStr.gsDeleteContourPaths;
             deleteAppliedAreaToolStripMenuItem.Text = gStr.gsDeleteAppliedArea;
             deleteForSureToolStripMenuItem.Text = gStr.gsAreYouSure;
-            toolStripMenuItem9.Text = gStr.gsField;
-            tramLinesMenuField.Text = gStr.gsTramLines;
-            recordedPathStripMenu.Text = gStr.gsRecordedPathMenu;
-
             webcamToolStrip.Text = gStr.gsWebCam;
             offsetFixToolStrip.Text = gStr.gsOffsetFix;
-            wizardsMenu.Text = gStr.gsWizards;
-            steerWizardMenuItem.Text = gStr.gsSteerWizard;
-            steerChartToolStripMenuItem.Text = gStr.gsSteerChart;
-            headingChartToolStripMenuItem.Text = gStr.gsHeadingChart;
-            xTEChartToolStripMenuItem.Text = gStr.gsXTEChart;
 
             btnChangeMappingColor.Text = Application.ProductVersion.ToString(CultureInfo.InvariantCulture);
             //btnChangeMappingColor.Text = btnChangeMappingColor.Text.Substring(2);
@@ -598,7 +553,6 @@ namespace AgOpenGPS
             }
 
             SaveFormGPSWindowSettings();
-            FileUpdateAllFieldsKML();
 
             if (loopBackSocket != null)
             {
@@ -623,34 +577,6 @@ namespace AgOpenGPS
         {
             FixPanelsAndMenus();
             if (isGPSPositionInitialized) SetZoom();
-
-            Form f = Application.OpenForms["FormGPSData"];
-            if (f != null)
-            {
-                f.Top = this.Top + this.Height / 2 - GPSDataWindowTopOffset;
-                f.Left = this.Left + GPSDataWindowLeft;
-            }
-            Form f1 = Application.OpenForms["FormFieldData"];
-            if (f1 != null)
-            {
-                f1.Top = this.Top + this.Height / 2 - GPSDataWindowTopOffset;
-                f1.Left = this.Left + GPSDataWindowLeft;
-            }
-        }
-        private void FormGPS_Move(object sender, EventArgs e)
-        {
-            Form f = Application.OpenForms["FormGPSData"];
-            if (f != null)
-            {
-                f.Top = this.Top + this.Height/2 - GPSDataWindowTopOffset;
-                f.Left = this.Left + GPSDataWindowLeft;
-            }
-            Form f1 = Application.OpenForms["FormFieldData"];
-            if (f1 != null)
-            {
-                f1.Top = this.Top + this.Height / 2 - GPSDataWindowTopOffset;
-                f1.Left = this.Left + GPSDataWindowLeft;
-            }
         }
 
         // Load Bitmaps And Convert To Textures
@@ -706,8 +632,7 @@ namespace AgOpenGPS
 
                 if (result == DialogResult.OK) return 0;      //Save and Exit
                 if (result == DialogResult.Ignore) return 1;   //Ignore
-                if (result == DialogResult.Yes) return 2;   //Ignore
-
+                if (result == DialogResult.Yes) return 2;      //Save As
                 return 3;  // oops something is really busted
             }
         }
@@ -838,8 +763,6 @@ namespace AgOpenGPS
             btnABDraw.Enabled = true;
             btnCycleLines.Image = Properties.Resources.ABLineCycle;
             btnCycleLines.Enabled = true;
-            btnCycleLinesBk.Image = Properties.Resources.ABLineCycleBk;
-            btnCycleLinesBk.Enabled = true;
 
             ABLine.abHeading = 0.00;
             btnAutoSteer.Enabled = true;
@@ -1016,7 +939,6 @@ namespace AgOpenGPS
 
             //clean up tram
             tram.displayMode = 0;
-            tram.generateMode = 0;
             tram.tramBndInnerArr?.Clear();
             tram.tramBndOuterArr?.Clear();
 
@@ -1032,8 +954,6 @@ namespace AgOpenGPS
             btnABDraw.Enabled = false;
             btnCycleLines.Image = Properties.Resources.ABLineCycle;
             btnCycleLines.Enabled = false;
-            btnCycleLinesBk.Image = Properties.Resources.ABLineCycleBk;
-            btnCycleLinesBk.Enabled = false;
 
             //AutoSteer
             btnAutoSteer.Enabled = false;
@@ -1102,13 +1022,11 @@ namespace AgOpenGPS
             btnSnapToPivot.Visible = false;
             cboxpRowWidth.Visible = false;
             btnYouSkipEnable.Visible = false;
-            btnEditAB.Visible = false;
         }
-        
+
         //take the distance from object and convert to camera data
         public void SetZoom()
         {
-            
             //match grid to cam distance and redo perspective
             if (camera.camSetDistance > -50 ) camera.gridZoom = 10;
             else if (camera.camSetDistance > -150 ) camera.gridZoom = 20;

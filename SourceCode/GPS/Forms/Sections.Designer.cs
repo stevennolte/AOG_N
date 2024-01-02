@@ -718,10 +718,6 @@ namespace AgOpenGPS
 
             p_239.pgn[p_239.speed] = unchecked((byte)(avgSpeed * 10));
             p_239.pgn[p_239.tram] = unchecked((byte)tram.controlByte);
-
-            p_101.pgn[p_101.sprayEnabled] = unchecked((byte)tool.toolEnable);
-            p_101.pgn[p_101.targetRate] = unchecked((byte)(tool.targetRate * 10));
-            
         }
 
         private void DoRemoteSwitches()

@@ -15,7 +15,7 @@ namespace AgOpenGPS
         public double farLeftSpeed = 0;
         public double farRightPosition = 0;
         public double farRightSpeed = 0;
-        
+
         public double overlap;
         public double trailingHitchLength, tankTrailingHitchLength;
         public double offset;
@@ -52,23 +52,6 @@ namespace AgOpenGPS
 
         public int zones;
         public int[] zoneRanges = new int[9];
-
-        //Sprayer values
-        public int toolEnable = 0;
-        public int autoBoomEnable = 0;
-        public double targetRate = 0;
-        //Sprayer returned values
-        public double mainFlowRate = 0;
-        public double section1FlowRate = 0;
-        public double section2FlowRate = 0;
-        public double section3FlowRate = 0;
-        public double section4FlowRate = 0;
-        public double section5FlowRate = 0;
-
-
-
-
-
 
         //Constructor called by FormGPS
         public CTool(FormGPS _f)
@@ -130,7 +113,6 @@ namespace AgOpenGPS
             {
                 zoneRanges[i] = int.Parse(words[i]);
             }
-            
         }
 
         public void DrawTool()
@@ -340,26 +322,24 @@ namespace AgOpenGPS
                 //tram Dots
                 if (mf.tram.displayMode != 0)
                 {
-                    if (mf.camera.camSetDistance > -300)
+                    if (mf.camera.camSetDistance > -200)
                     {
-                        if (mf.camera.camSetDistance > -100)
-                            GL.PointSize(16);
-                        else GL.PointSize(12);
 
                         if (mf.tram.isOuter)
                         {
+
                             //section markers
                             GL.Begin(PrimitiveType.Points);
 
                             //right side
                             if (((mf.tram.controlByte) & 1) == 1) GL.Color3(0.0f, 0.900f, 0.39630f);
-                            else GL.Color3(0,0,0);
-                            GL.Vertex3(farRightPosition - mf.tram.halfWheelTrack, trailingTool, 0);
+                            else GL.Color3(0.90f, 0.00f, 0.0f);
+                            GL.Vertex3(farRightPosition - mf.tram.halfWheelTrack, trailingTool + 0.21, 0);
 
                             //left side
                             if ((mf.tram.controlByte & 2) == 2) GL.Color3(0.0f, 0.900f, 0.3930f);
-                            else GL.Color3(0, 0, 0);
-                            GL.Vertex3(farLeftPosition + mf.tram.halfWheelTrack, trailingTool, 0);
+                            else GL.Color3(0.90f, 0.00f, 0.0f);
+                            GL.Vertex3(farLeftPosition + mf.tram.halfWheelTrack, trailingTool + 0.21, 0);
                             GL.End();
                         }
                         else
@@ -368,13 +348,13 @@ namespace AgOpenGPS
 
                             //right side
                             if (((mf.tram.controlByte) & 1) == 1) GL.Color3(0.0f, 0.900f, 0.39630f);
-                            else GL.Color3(0, 0, 0);
-                            GL.Vertex3(mf.tram.halfWheelTrack, trailingTool, 0);
+                            else GL.Color3(0.90f, 0.00f, 0.0f);
+                            GL.Vertex3(mf.tram.halfWheelTrack, trailingTool + 0.21, 0);
 
                             //left side
                             if ((mf.tram.controlByte & 2) == 2) GL.Color3(0.0f, 0.900f, 0.3930f);
-                            else GL.Color3(0, 0, 0);
-                            GL.Vertex3(-mf.tram.halfWheelTrack, trailingTool, 0);
+                            else GL.Color3(0.90f, 0.00f, 0.0f);
+                            GL.Vertex3(-mf.tram.halfWheelTrack, trailingTool + 0.21, 0);
                             GL.End();
                         }
                     }

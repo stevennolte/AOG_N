@@ -83,48 +83,42 @@ namespace AgOpenGPS
         private void bntOk_Click(object sender, EventArgs e)
         {
             isClosing = true;
-            if (mf.ABLine.isABLineSet && mf.ABLine.isABLineLoaded)
+            
+            //index to last one. 
+            int idx = mf.ABLine.numABLineSelected - 1;
+
+            if (idx >= 0)
             {
-                //index to last one. 
-                int idx = mf.ABLine.numABLineSelected - 1;
-
-                if (idx >= 0)
-                {
-                    mf.ABLine.lineArr[idx].heading = mf.ABLine.abHeading;
-                    //calculate the new points for the reference line and points
-                    mf.ABLine.lineArr[idx].origin.easting = mf.ABLine.refPoint1.easting;
-                    mf.ABLine.lineArr[idx].origin.northing = mf.ABLine.refPoint1.northing;
-                }
-
-                mf.FileSaveABLines();
-
-                mf.panelRight.Enabled = true;
+                mf.ABLine.lineArr[idx].heading = mf.ABLine.abHeading;
+                //calculate the new points for the reference line and points
+                mf.ABLine.lineArr[idx].origin.easting = mf.ABLine.refPoint1.easting;
+                mf.ABLine.lineArr[idx].origin.northing = mf.ABLine.refPoint1.northing;
             }
-            mf.ABLine.moveDistance = 0;
-            mf.ABLine.isABValid = false;
 
+            mf.FileSaveABLines();
+            mf.ABLine.moveDistance = 0;
+
+            mf.panelRight.Enabled = true;
+            mf.ABLine.isABValid = false;
             Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             isClosing = true;
-            if (mf.ABLine.isABLineSet && mf.ABLine.isABLineLoaded && mf.isJobStarted)
-            {
-                int last = mf.ABLine.numABLineSelected;
-                mf.FileLoadABLines();
+            int last = mf.ABLine.numABLineSelected;
+            mf.FileLoadABLines();
 
-                mf.ABLine.numABLineSelected = last;
-                mf.ABLine.refPoint1 = mf.ABLine.lineArr[mf.ABLine.numABLineSelected - 1].origin;
-                mf.ABLine.abHeading = mf.ABLine.lineArr[mf.ABLine.numABLineSelected - 1].heading;
-                mf.ABLine.SetABLineByHeading();
-                mf.ABLine.isABLineSet = true;
-                mf.ABLine.isABLineLoaded = true;
-                mf.ABLine.moveDistance = 0;
+            mf.ABLine.numABLineSelected = last;
+            mf.ABLine.refPoint1 = mf.ABLine.lineArr[mf.ABLine.numABLineSelected - 1].origin;
+            mf.ABLine.abHeading = mf.ABLine.lineArr[mf.ABLine.numABLineSelected - 1].heading;
+            mf.ABLine.SetABLineByHeading();
+            mf.ABLine.isABLineSet = true;
+            mf.ABLine.isABLineLoaded = true;
+            mf.ABLine.moveDistance = 0;
 
-                mf.panelRight.Enabled = true;
-                mf.ABLine.isABValid = false;
-            }
+            mf.panelRight.Enabled = true;
+            mf.ABLine.isABValid = false;
             Close();
         }
 

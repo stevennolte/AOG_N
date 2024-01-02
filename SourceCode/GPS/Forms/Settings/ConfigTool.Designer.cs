@@ -316,15 +316,7 @@ namespace AgOpenGPS
         {
             cboxIsUnique.Checked = !mf.tool.isSectionsNotZones;
 
-            cboxSectionBoundaryControl.Checked = Properties.Settings.Default.setTool_isSectionOffWhenOut;
-            if (cboxSectionBoundaryControl.Checked)
-            {
-                cboxSectionBoundaryControl.BackgroundImage = Properties.Resources.SectionOffBoundary;
-            }
-            else
-            {
-                cboxSectionBoundaryControl.BackgroundImage = Properties.Resources.SectionOnBoundary;
-            }
+             cboxSectionBoundaryControl.Checked = Properties.Settings.Default.setTool_isSectionOffWhenOut;
 
             nudCutoffSpeed.Value = (decimal)Properties.Settings.Default.setVehicle_slowSpeedCutoff;
 
@@ -471,7 +463,8 @@ namespace AgOpenGPS
                 //update the widths of sections and tool width in main
                 mf.SectionCalcWidths();
 
-                mf.tram.IsTramOuterOrInner();
+                mf.tram.isOuter = ((int)(mf.tram.tramWidth / mf.tool.width + 0.5)) % 2 == 0 ? true : false;
+                Properties.Settings.Default.setTool_isTramOuter = mf.tram.isOuter;
 
                 Properties.Settings.Default.setVehicle_toolWidth = mf.tool.width;
 
@@ -485,7 +478,8 @@ namespace AgOpenGPS
                 mf.tool.width = numberOfSections * defaultSectionWidth;
                 Properties.Settings.Default.setVehicle_toolWidth = mf.tool.width;
 
-                mf.tram.IsTramOuterOrInner();
+                mf.tram.isOuter = ((int)(mf.tram.tramWidth / mf.tool.width + 0.5)) % 2 == 0 ? true : false;
+                Properties.Settings.Default.setTool_isTramOuter = mf.tram.isOuter;
 
                 Properties.Settings.Default.Save();
 
@@ -808,21 +802,6 @@ namespace AgOpenGPS
                 lblZoneStart8.Text = (nudZone7To.Value + 1).ToString();
             }
 
-        }
-        private void cboxSectionBoundaryControl_Click(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.setTool_isSectionOffWhenOut = !Properties.Settings.Default.setTool_isSectionOffWhenOut;
-            Properties.Settings.Default.Save();
-
-            cboxSectionBoundaryControl.Checked = Properties.Settings.Default.setTool_isSectionOffWhenOut;
-            if (cboxSectionBoundaryControl.Checked)
-            {
-                cboxSectionBoundaryControl.BackgroundImage = Properties.Resources.SectionOffBoundary;
-            }
-            else
-            {
-                cboxSectionBoundaryControl.BackgroundImage = Properties.Resources.SectionOnBoundary;
-            }
         }
 
         private void cboxIsUnique_Click(object sender, EventArgs e)

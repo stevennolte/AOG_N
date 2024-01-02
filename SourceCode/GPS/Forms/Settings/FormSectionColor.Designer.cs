@@ -594,6 +594,7 @@
             this.cb12.Text = "12";
             this.cb12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb12.UseVisualStyleBackColor = true;
+            this.cb12.CheckedChanged += new System.EventHandler(this.cb12_CheckedChanged);
             this.cb12.Click += new System.EventHandler(this.cb01_Click);
             // 
             // cb10
@@ -632,6 +633,7 @@
             this.cb11.Text = "11";
             this.cb11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb11.UseVisualStyleBackColor = true;
+            this.cb11.CheckedChanged += new System.EventHandler(this.cb11_CheckedChanged);
             this.cb11.Click += new System.EventHandler(this.cb01_Click);
             // 
             // cb09

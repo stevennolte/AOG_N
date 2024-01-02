@@ -1,21 +1,8 @@
-﻿using System.ComponentModel;
-using System.Drawing;
-using System.Drawing.Drawing2D;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace AgOpenGPS
 {
-    public class RoundButton : Button
-    {
-        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
-        {
-            GraphicsPath grPath = new GraphicsPath();
-            grPath.AddEllipse(0, 0, ClientSize.Width, ClientSize.Height);
-            this.Region = new System.Drawing.Region(grPath);
-            base.OnPaint(e);
-        }
-    }
-
     public static class CExtensionMethods
     {
         /// <summary>
@@ -54,47 +41,5 @@ namespace AgOpenGPS
             return Color.FromArgb(color.A, currentR, currentG, currentB);
         }
     }
-
-    //public class ExtendedPanel : Panel
-    //{
-    //    private const int WS_EX_TRANSPARENT = 0x20;
-    //    public ExtendedPanel()
-    //    {
-    //        SetStyle(ControlStyles.Opaque, true);
-    //    }
-
-    //    private int opacity = 50;
-    //    [DefaultValue(50)]
-    //    public int Opacity
-    //    {
-    //        get
-    //        {
-    //            return this.opacity;
-    //        }
-    //        set
-    //        {
-    //            if (value < 0 || value > 100)
-    //                throw new System.ArgumentException("value must be between 0 and 100");
-    //            this.opacity = value;
-    //        }
-    //    }
-    //    protected override CreateParams CreateParams
-    //    {
-    //        get
-    //        {
-    //            CreateParams cp = base.CreateParams;
-    //            cp.ExStyle = cp.ExStyle | WS_EX_TRANSPARENT;
-    //            return cp;
-    //        }
-    //    }
-    //    protected override void OnPaint(PaintEventArgs e)
-    //    {
-    //        using (var brush = new SolidBrush(Color.FromArgb(this.opacity * 255 / 100, this.BackColor)))
-    //        {
-    //            e.Graphics.FillRectangle(brush, this.ClientRectangle);
-    //        }
-    //        base.OnPaint(e);
-    //    }
-    //}
 
 }

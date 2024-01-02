@@ -162,9 +162,6 @@
   <data name="gsCentimeters" xml:space="preserve">
     <value>Santimetre</value>
   </data>
-  <data name="gsCharts" xml:space="preserve">
-    <value>Tablosu</value>
-  </data>
   <data name="gsChooseADifferentField" xml:space="preserve">
     <value>Farklı bir alan seçin</value>
   </data>
@@ -287,9 +284,6 @@
   </data>
   <data name="gsHelp" xml:space="preserve">
     <value>Yardım</value>
-  </data>
-  <data name="gsIfWrongDirectionTapVehicle" xml:space="preserve">
-    <value>Yanlış yön? Araç'a dokunun</value>
   </data>
   <data name="gsInches" xml:space="preserve">
     <value>İnç</value>
@@ -463,7 +457,7 @@
     <value>Yeni Alan Başlat</value>
   </data>
   <data name="gsSteerChart" xml:space="preserve">
-    <value>Yön Tablosu</value>
+    <value>Tablosu</value>
   </data>
   <data name="gsStopRecordPauseBoundary" xml:space="preserve">
     <value>Durdur Kaydı Duraklat Sınır</value>

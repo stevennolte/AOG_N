@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Globalization;
-using System.IO;
 using System.Windows.Forms;
-using System.Xml;
 
 namespace AgOpenGPS
 {
@@ -15,7 +11,6 @@ namespace AgOpenGPS
         private double aveLineHeading;
         private int originalLine = 0;
         private bool isClosing;
-        private int selectedItem = -1;
 
         public FormABCurve(Form _mf)
         {
@@ -44,186 +39,46 @@ namespace AgOpenGPS
             panelAPlus.Visible = false;
             panelName.Visible = false;
 
-            this.Size = new System.Drawing.Size(620,475);
+            this.Size = new System.Drawing.Size(470, 360);
 
             originalLine = mf.curve.numCurveLineSelected;
             mf.curve.isOkToAddDesPoints = false;
-            selectedItem = -1;
 
-            UpdateTable();
+            UpdateLineList();
+
+            if (lvLines.Items.Count > 0 && originalLine > 0)
+            {
+                lvLines.Items[originalLine - 1].EnsureVisible();
+                lvLines.Items[originalLine - 1].Selected = true;
+                lvLines.Select();
+            }
+
         }
 
-        private void UpdateTable()
+        private void UpdateLineList()
         {
-            Font backupfont = new Font(Font.FontFamily, 18F, FontStyle.Regular);
-            flp.Controls.Clear();
+            lvLines.Clear();
+            ListViewItem itm;
 
-            for (int i = 0; i < mf.curve.curveArr.Count; i++)
+            foreach (CCurveLines item in mf.curve.curveArr)
             {
-                //outer inner
-                Button a = new Button
-                {
-                    Margin = new Padding(6,10,10,10),
-                    Size = new Size(50, 25),
-                    Name = i.ToString(),
-                    TextAlign = ContentAlignment.MiddleCenter,
-                    //ForeColor = System.Drawing.SystemColors.ButtonFace
-                };
-                a.Click += A_Click;
+                itm = new ListViewItem(item.Name);
+                lvLines.Items.Add(itm);
+            }
 
-                if (mf.curve.curveArr[i].isVisible)
-                    a.BackColor = System.Drawing.Color.Green;
-                else
-                    a.BackColor = System.Drawing.Color.Red;
-
-                //a.Font = backupfont;
-                //a.FlatStyle = FlatStyle.Flat;
-                //a.FlatAppearance.BorderColor = Color.Cyan;
-                //a.BackColor = Color.Transparent;
-                //a.FlatAppearance.MouseOverBackColor = BackColor;
-                //a.FlatAppearance.MouseDownBackColor = BackColor;
-
-                TextBox t = new TextBox
-                {
-                    Margin = new Padding(3),
-                    Size = new Size(330, 35),
-                    Text = mf.curve.curveArr[i].Name,
-                    Name = i.ToString(),
-                };
-                t.Font = backupfont;
-                t.Click += LineSelected_Click;
-
-
-                if (mf.curve.curveArr[i].isVisible)
-                    t.ForeColor = System.Drawing.Color.Black;
-                else
-                    t.ForeColor = System.Drawing.Color.Gray;
-
-                if (i == selectedItem)
-                {
-                    t.BackColor = System.Drawing.Color.LightBlue;
-                }
-                else
-                {
-                    t.BackColor = System.Drawing.SystemColors.ButtonFace;
-                }
-
-                flp.Controls.Add(a);
-                flp.Controls.Add(t);
+            // go to bottom of list - if there is a bottom
+            if (lvLines.Items.Count > 0)
+            {
+                lvLines.Items[lvLines.Items.Count - 1].EnsureVisible();
+                lvLines.Items[lvLines.Items.Count - 1].Selected = true;
+                lvLines.Select();
             }
         }
-
-        public void SmoothAB(int smPts)
-        {
-            //count the reference list of original curve
-            int cnt = mf.curve.desList.Count;
-
-            //the temp array
-            vec3[] arr = new vec3[cnt];
-
-            //read the points before and after the setpoint
-            for (int s = 0; s < smPts / 2; s++)
-            {
-                arr[s].easting = mf.curve.desList[s].easting;
-                arr[s].northing = mf.curve.desList[s].northing;
-                arr[s].heading = mf.curve.desList[s].heading;
-            }
-
-            for (int s = cnt - (smPts / 2); s < cnt; s++)
-            {
-                arr[s].easting = mf.curve.desList[s].easting;
-                arr[s].northing = mf.curve.desList[s].northing;
-                arr[s].heading = mf.curve.desList[s].heading;
-            }
-
-            //average them - center weighted average
-            for (int i = smPts / 2; i < cnt - (smPts / 2); i++)
-            {
-                for (int j = -smPts / 2; j < smPts / 2; j++)
-                {
-                    arr[i].easting += mf.curve.desList[j + i].easting;
-                    arr[i].northing += mf.curve.desList[j + i].northing;
-                }
-                arr[i].easting /= smPts;
-                arr[i].northing /= smPts;
-                arr[i].heading = mf.curve.desList[i].heading;
-            }
-
-            //make a list to draw
-            mf.curve.desList?.Clear();
-            for (int i = 0; i < cnt; i++)
-            {
-                mf.curve.desList.Add(arr[i]);
-            }
-        }
-
-        public void CalculateTurnHeadings()
-        {
-            //to calc heading based on next and previous points to give an average heading.
-            int cnt = mf.curve.desList.Count;
-            if (cnt > 0)
-            {
-                vec3[] arr = new vec3[cnt];
-                cnt--;
-                mf.curve.desList.CopyTo(arr);
-                mf.curve.desList.Clear();
-
-                //middle points
-                for (int i = 1; i < cnt; i++)
-                {
-                    vec3 pt3 = arr[i];
-                    pt3.heading = Math.Atan2(arr[i + 1].easting - arr[i - 1].easting, arr[i + 1].northing - arr[i - 1].northing);
-                    if (pt3.heading < 0) pt3.heading += glm.twoPI;
-                    mf.curve.desList.Add(pt3);
-                }
-            }
-        }
-
-        private void A_Click(object sender, EventArgs e)
-        {
-            if (sender is Button b)
-            {
-                mf.curve.curveArr[Convert.ToInt32(b.Name)].isVisible = !mf.curve.curveArr[Convert.ToInt32(b.Name)].isVisible;
-                selectedItem = -1;
-                UpdateTable();
-            }
-        }
-
-        private void LineSelected_Click(object sender, EventArgs e)
-        {
-            if (sender is TextBox t)
-            {
-                if (selectedItem == Convert.ToInt32(t.Name))
-                    selectedItem = -1;
-                else
-                    selectedItem = Convert.ToInt32(t.Name);
-
-                UpdateTable();
-            }
-        }
-
-        private void btnMoveUp_Click(object sender, EventArgs e)
-        {
-            if (selectedItem == -1 || selectedItem == 0) 
-                return;
-
-            mf.curve.curveArr.Reverse(selectedItem - 1, 2);
-            selectedItem--;
-            UpdateTable();
-        }
-
-        private void btnMoveDn_Click(object sender, EventArgs e)
-        {
-            if (selectedItem == -1 || selectedItem == (mf.curve.curveArr.Count-1))
-                return;
-
-            mf.curve.curveArr.Reverse(selectedItem, 2);
-            selectedItem++;
-            UpdateTable();
-        }
+        //for calculating for display the averaged new line
 
         private void btnNewCurve_Click(object sender, EventArgs e)
         {
+            lvLines.SelectedItems.Clear();
             panelPick.Visible = false;
             panelAPlus.Visible = true;
             panelName.Visible = false;
@@ -291,7 +146,7 @@ namespace AgOpenGPS
                 if (aveLineHeading < 0) aveLineHeading += glm.twoPI;
 
                 //build the tail extensions
-                mf.curve.AddFirstLastPoints(ref mf.curve.desList);
+                AddFirstLastPoints();
                 SmoothAB(4);
                 CalculateTurnHeadings();
 
@@ -313,10 +168,11 @@ namespace AgOpenGPS
                 panelAPlus.Visible = false;
                 panelName.Visible = false;
 
-                this.Size = new System.Drawing.Size(620,475);
+                this.Size = new System.Drawing.Size(470, 360);
+
+                UpdateLineList();
             }
         }
-
         private void btnAddTime_Click(object sender, EventArgs e)
         {
             textBox1.Text += DateTime.Now.ToString(" hh:mm:ss", CultureInfo.InvariantCulture);
@@ -340,6 +196,7 @@ namespace AgOpenGPS
                 btnBPoint.Enabled = true;
             }
         }
+
 
         private void btnCancelMain_Click(object sender, EventArgs e)
         {
@@ -372,7 +229,9 @@ namespace AgOpenGPS
             panelEditName.Visible = false;
             panelName.Visible = false;
 
-            this.Size = new System.Drawing.Size(620,475);
+            this.Size = new System.Drawing.Size(470, 360);
+
+            UpdateLineList();
         }
 
         private void textBox_Click(object sender, EventArgs e)
@@ -409,194 +268,40 @@ namespace AgOpenGPS
             panelAPlus.Visible = false;
             panelName.Visible = false;
 
-            this.Size = new System.Drawing.Size(620,475);
+            this.Size = new System.Drawing.Size(470, 360);
 
+            UpdateLineList();
+            lvLines.Focus();
             mf.curve.desList?.Clear();
-            UpdateTable();
-        }
-
-        private void btnLoadFromKML_Click(object sender, EventArgs e)
-        {
-            panelPick.Visible = false;
-            panelAPlus.Visible = false;
-            panelName.Visible = false;
-            panelKML.Visible = true;
-
-            this.Size = new System.Drawing.Size(270, 360);
-
-            string fileAndDirectory;
-
-            //create the dialog instance
-            OpenFileDialog ofd = new OpenFileDialog
-            {
-                //set the filter to text KML only
-                Filter = "KML files (*.KML)|*.KML",
-
-                //the initial directory, fields, for the open dialog
-                InitialDirectory = mf.fieldsDirectory + mf.currentFieldDirectory
-            };
-
-            //was a file selected
-            if (ofd.ShowDialog(this) == DialogResult.Cancel)
-            {
-                mf.curve.isOkToAddDesPoints = false;
-                mf.curve.desList?.Clear();
-
-                panelPick.Visible = true;
-                panelAPlus.Visible = false;
-                panelEditName.Visible = false;
-                panelName.Visible = false;
-                panelKML.Visible = false;
-
-                this.Size = new System.Drawing.Size(620, 475);
-
-                return;
-            }
-            else fileAndDirectory = ofd.FileName;
-            {
-                double lonK = 0;
-                double latK = 0;
-                double easting = 0;
-                double norting = 0;
-                string shortName = "";
-
-                mf.curve.desList?.Clear();
-
-                XmlDocument doc = new XmlDocument();
-                doc.PreserveWhitespace = true;
-
-                try
-                {
-                    doc.Load(fileAndDirectory);
-                    shortName = Path.GetFileName(fileAndDirectory);
-                    shortName = shortName.Substring(0, shortName.Length - 4);
-
-                    XmlElement root = doc.DocumentElement;
-                    XmlNodeList elemList = root.GetElementsByTagName("coordinates");
-                    XmlNodeList namelist = root.GetElementsByTagName("name");
-
-                    if (namelist.Count > 0)
-                    {
-                        shortName = namelist[0].InnerText;
-                    }
-
-                    for (int i = 0; i < elemList.Count; i++)
-                    {
-                        int g = namelist.Count - elemList.Count;
-
-                        string line = elemList[i].InnerText;
-                        line.Trim();
-                        //line = coordinates;
-                        char[] delimiterChars = { ' ', '\t', '\r', '\n' };
-                        string[] numberSets = line.Split(delimiterChars);
-
-                        //at least 3 points
-                        if (numberSets.Length > 1)
-                        {
-
-                            foreach (string item in numberSets)
-                            {
-                                string[] fix = item.Split(',');
-                                if (fix.Length != 3) continue;
-                                double.TryParse(fix[0], NumberStyles.Float, CultureInfo.InvariantCulture, out lonK);
-                                double.TryParse(fix[1], NumberStyles.Float, CultureInfo.InvariantCulture, out latK);
-
-                                mf.pn.ConvertWGS84ToLocal(latK, lonK, out norting, out easting);
-
-                                vec3 bndPt = new vec3(easting, norting, 0);
-                                mf.curve.desList.Add(bndPt);
-                            }
-                        }
-                    }
-
-                    int cnt = mf.curve.desList.Count;
-                    if (cnt > 1)
-                    {
-                        //make sure distance isn't too big between points on Turn
-                        for (int i = 0; i < cnt - 1; i++)
-                        {
-                            int j = i + 1;
-                            //if (j == cnt) j = 0;
-                            double distance = glm.Distance(mf.curve.desList[i], mf.curve.desList[j]);
-                            if (distance > 1.6)
-                            {
-                                vec3 pointB = new vec3(
-                                    (mf.curve.desList[i].easting + mf.curve.desList[j].easting) / 2.0,
-                                    (mf.curve.desList[i].northing + mf.curve.desList[j].northing) / 2.0,
-                                    mf.curve.desList[i].heading
-                                    );
-
-                                mf.curve.desList.Insert(j, pointB);
-                                cnt = mf.curve.desList.Count;
-                                i = -1;
-                            }
-                        }
-
-                        CalculateTurnHeadings();
-
-                        //build the tail extensions
-                        mf.curve.AddFirstLastPoints(ref mf.curve.desList);
-                        SmoothAB(4);
-                        CalculateTurnHeadings();
-
-                        panelKML.Visible = false;
-                        panelName.Visible = true;
-
-                        textBox1.Text = shortName;
-                        UpdateTable();
-                        flp.Focus();
-                    }
-                }
-                catch (System.IO.FileNotFoundException)
-                {
-
-                    Console.WriteLine("Bad or Missing Curve-KML file");
-                }
-            }
         }
 
         private void btnListDelete_Click(object sender, EventArgs e)
         {
             mf.curve.moveDistance = 0;
 
-            if (selectedItem > -1)
+            if (lvLines.SelectedItems.Count > 0)
             {
-                mf.curve.curveArr.RemoveAt(selectedItem);
+                int num = lvLines.SelectedIndices[0];
+                mf.curve.curveArr.RemoveAt(num);
+                lvLines.SelectedItems[0].Remove();
 
                 //everything changed, so make sure its right
                 mf.curve.numCurveLines = mf.curve.curveArr.Count;
                 if (mf.curve.numCurveLineSelected > mf.curve.numCurveLines) mf.curve.numCurveLineSelected = mf.curve.numCurveLines;
 
-                //if there are no saved ones, empty out current curve line and turn off
+                //if there are no saved oned, empty out current curve line and turn off
                 if (mf.curve.numCurveLines == 0)
                 {
                     mf.curve.ResetCurveLine();
                     if (mf.isAutoSteerBtnOn) mf.btnAutoSteer.PerformClick();
                     if (mf.yt.isYouTurnBtnOn) mf.btnAutoYouTurn.PerformClick();
                 }
-                else
-                {
-                    selectedItem = -1;
-                    mf.curve.numCurveLineSelected = 1;
-
-
-                    mf.curve.aveLineHeading = mf.curve.curveArr[0].aveHeading;
-                    mf.curve.refList?.Clear();
-                    for (int i = 0; i < mf.curve.curveArr[0].curvePts.Count; i++)
-                    {
-                        mf.curve.refList.Add(mf.curve.curveArr[0].curvePts[i]);
-                    }
-                    mf.curve.isCurveSet = true;
-                    mf.yt.ResetYouTurn();
-                }
 
                 mf.FileSaveCurveLines();
             }
 
-            selectedItem = -1;
-
-            UpdateTable();
-            flp.Focus();
+            UpdateLineList();
+            lvLines.Focus();
         }
 
         private void btnListUse_Click(object sender, EventArgs e)
@@ -606,12 +311,10 @@ namespace AgOpenGPS
             mf.curve.isCurveValid = false;
             mf.curve.moveDistance = 0;
 
-            mf.FileSaveCurveLines();
-
-            if (selectedItem > -1)
+            if (lvLines.SelectedItems.Count > 0)
             {
 
-                int idx = selectedItem;
+                int idx = lvLines.SelectedIndices[0];
                 mf.curve.numCurveLineSelected = idx + 1;
 
 
@@ -628,27 +331,115 @@ namespace AgOpenGPS
             }
             else
             {
-                //mf.curve.moveDistance = 0;
-                //mf.curve.isOkToAddDesPoints = false;
-                //mf.curve.isCurveSet = false;
-                //mf.curve.refList?.Clear();
-                //mf.curve.isCurveSet = false;
-                //mf.DisableYouTurnButtons();
-                //mf.curve.isBtnCurveOn = false;
-                //mf.btnCurve.Image = Properties.Resources.CurveOff;
-                //if (mf.isAutoSteerBtnOn) mf.btnAutoSteer.PerformClick();
-                //if (mf.yt.isYouTurnBtnOn) mf.btnAutoYouTurn.PerformClick();
+                mf.curve.moveDistance = 0;
+                mf.curve.isOkToAddDesPoints = false;
+                mf.curve.isCurveSet = false;
+                mf.curve.refList?.Clear();
+                mf.curve.isCurveSet = false;
+                mf.DisableYouTurnButtons();
+                mf.curve.isBtnCurveOn = false;
+                mf.btnCurve.Image = Properties.Resources.CurveOff;
+                if (mf.isAutoSteerBtnOn) mf.btnAutoSteer.PerformClick();
+                if (mf.yt.isYouTurnBtnOn) mf.btnAutoYouTurn.PerformClick();
 
-                //mf.curve.numCurveLineSelected = 0;
+                mf.curve.numCurveLineSelected = 0;
                 Close();
+            }
+        }
+
+        public void SmoothAB(int smPts)
+        {
+            //count the reference list of original curve
+            int cnt = mf.curve.desList.Count;
+
+            //the temp array
+            vec3[] arr = new vec3[cnt];
+
+            //read the points before and after the setpoint
+            for (int s = 0; s < smPts / 2; s++)
+            {
+                arr[s].easting = mf.curve.desList[s].easting;
+                arr[s].northing = mf.curve.desList[s].northing;
+                arr[s].heading = mf.curve.desList[s].heading;
+            }
+
+            for (int s = cnt - (smPts / 2); s < cnt; s++)
+            {
+                arr[s].easting = mf.curve.desList[s].easting;
+                arr[s].northing = mf.curve.desList[s].northing;
+                arr[s].heading = mf.curve.desList[s].heading;
+            }
+
+            //average them - center weighted average
+            for (int i = smPts / 2; i < cnt - (smPts / 2); i++)
+            {
+                for (int j = -smPts / 2; j < smPts / 2; j++)
+                {
+                    arr[i].easting += mf.curve.desList[j + i].easting;
+                    arr[i].northing += mf.curve.desList[j + i].northing;
+                }
+                arr[i].easting /= smPts;
+                arr[i].northing /= smPts;
+                arr[i].heading = mf.curve.desList[i].heading;
+            }
+
+            //make a list to draw
+            mf.curve.desList?.Clear();
+            for (int i = 0; i < cnt; i++)
+            {
+                mf.curve.desList.Add(arr[i]);
+            }
+        }
+
+        public void AddFirstLastPoints()
+        {
+            int ptCnt = mf.curve.desList.Count - 1;
+            for (int i = 1; i < 200; i++)
+            {
+                vec3 pt = new vec3(mf.curve.desList[ptCnt]);
+                pt.easting += (Math.Sin(pt.heading) * i);
+                pt.northing += (Math.Cos(pt.heading) * i);
+                mf.curve.desList.Add(pt);
+            }
+
+            //and the beginning
+            vec3 start = new vec3(mf.curve.desList[0]);
+            for (int i = 1; i < 200; i++)
+            {
+                vec3 pt = new vec3(start);
+                pt.easting -= (Math.Sin(pt.heading) * i);
+                pt.northing -= (Math.Cos(pt.heading) * i);
+                mf.curve.desList.Insert(0, pt);
+            }
+        }
+
+        public void CalculateTurnHeadings()
+        {
+            //to calc heading based on next and previous points to give an average heading.
+            int cnt = mf.curve.desList.Count;
+            if (cnt > 0)
+            {
+                vec3[] arr = new vec3[cnt];
+                cnt--;
+                mf.curve.desList.CopyTo(arr);
+                mf.curve.desList.Clear();
+
+                //middle points
+                for (int i = 1; i < cnt; i++)
+                {
+                    vec3 pt3 = arr[i];
+                    pt3.heading = Math.Atan2(arr[i + 1].easting - arr[i - 1].easting, arr[i + 1].northing - arr[i - 1].northing);
+                    if (pt3.heading < 0) pt3.heading += glm.twoPI;
+                    mf.curve.desList.Add(pt3);
+                }
             }
         }
 
         private void btnDuplicate_Click(object sender, EventArgs e)
         {
-            if (selectedItem > -1)
+            if (lvLines.SelectedItems.Count > 0)
             {
-                int idx = selectedItem;
+                int idx = lvLines.SelectedIndices[0];
 
 
                 panelPick.Visible = false;
@@ -674,11 +465,9 @@ namespace AgOpenGPS
 
         private void btnEditName_Click(object sender, EventArgs e)
         {
-            if (selectedItem > -1)
+            if (lvLines.SelectedItems.Count > 0)
             {
-
-                int idx = selectedItem;
-
+                int idx = lvLines.SelectedIndices[0];
                 textBox2.Text = mf.curve.curveArr[idx].Name;
 
                 panelPick.Visible = false;
@@ -696,7 +485,8 @@ namespace AgOpenGPS
         {
             if (textBox2.Text.Trim() == "") textBox2.Text = "No Name " + DateTime.Now.ToString("hh:mm:ss", CultureInfo.InvariantCulture);
 
-            int idx = selectedItem;
+            int idx = lvLines.SelectedIndices[0];
+            mf.curve.curveArr[idx].Name = textBox2.Text.Trim();
 
             panelEditName.Visible = false;
             panelPick.Visible = true;
@@ -704,19 +494,17 @@ namespace AgOpenGPS
             mf.FileSaveCurveLines();
             mf.curve.desList?.Clear();
 
-            this.Size = new System.Drawing.Size(700, 450);
+            this.Size = new System.Drawing.Size(470, 360);
 
-            UpdateTable();
-            flp.Focus();
+            UpdateLineList();
+            lvLines.Focus();
         }
 
         private void btnSwapAB_Click(object sender, EventArgs e)
         {
-            if (selectedItem > -1)
+            if (lvLines.SelectedItems.Count > 0)
             {
-
-                int idx = selectedItem;
-                mf.curve.numCurveLineSelected = idx + 1;
+                int idx = lvLines.SelectedIndices[0];
 
                 int cnt = mf.curve.curveArr[idx].curvePts.Count;
                 if (cnt > 0)
@@ -743,10 +531,10 @@ namespace AgOpenGPS
                 }
 
                 mf.FileSaveCurveLines();
-                UpdateTable();
-                flp.Focus();
+                UpdateLineList();
+                lvLines.Focus();
 
-                mf.TimedMessageBox(1500, "A B Swapped", "Curve is Reversed");
+                _ = new FormTimedMessage(1500, "A B Swapped", "Curve is Reversed");
             }
         }
 

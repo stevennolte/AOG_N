@@ -31,10 +31,10 @@
             this.lblQuestion = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnOpenField = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnSaveAs = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -63,10 +63,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btnOpenField);
             this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.btnSaveAs);
             this.panel1.Controls.Add(this.btnOk);
             this.panel1.Controls.Add(this.btnReturn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -74,30 +74,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(608, 144);
             this.panel1.TabIndex = 260;
-            // 
-            // label1
-            // 
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(255, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 13);
-            this.label1.TabIndex = 264;
-            this.label1.Text = "Open";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnOpenField
-            // 
-            this.btnOpenField.BackColor = System.Drawing.Color.Transparent;
-            this.btnOpenField.FlatAppearance.BorderSize = 0;
-            this.btnOpenField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenField.Font = new System.Drawing.Font("Tahoma", 15.75F);
-            this.btnOpenField.Image = global::AgOpenGPS.Properties.Resources.JobActive;
-            this.btnOpenField.Location = new System.Drawing.Point(258, 45);
-            this.btnOpenField.Name = "btnOpenField";
-            this.btnOpenField.Size = new System.Drawing.Size(97, 64);
-            this.btnOpenField.TabIndex = 263;
-            this.btnOpenField.UseVisualStyleBackColor = false;
-            this.btnOpenField.Click += new System.EventHandler(this.btnOpenField_Click);
             // 
             // label5
             // 
@@ -109,6 +85,16 @@
             this.label5.TabIndex = 262;
             this.label5.Text = "Cancel";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(289, 29);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.TabIndex = 261;
+            this.label4.Text = "Save As";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -118,6 +104,20 @@
             this.label3.Size = new System.Drawing.Size(25, 13);
             this.label3.TabIndex = 260;
             this.label3.Text = "Exit";
+            // 
+            // btnSaveAs
+            // 
+            this.btnSaveAs.BackColor = System.Drawing.Color.Transparent;
+            this.btnSaveAs.FlatAppearance.BorderSize = 0;
+            this.btnSaveAs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveAs.Font = new System.Drawing.Font("Tahoma", 15.75F);
+            this.btnSaveAs.Image = global::AgOpenGPS.Properties.Resources.FileSaveAs;
+            this.btnSaveAs.Location = new System.Drawing.Point(262, 45);
+            this.btnSaveAs.Name = "btnSaveAs";
+            this.btnSaveAs.Size = new System.Drawing.Size(97, 64);
+            this.btnSaveAs.TabIndex = 258;
+            this.btnSaveAs.UseVisualStyleBackColor = false;
+            this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
             // 
             // btnOk
             // 
@@ -176,10 +176,10 @@
         private System.Windows.Forms.Label lblQuestion;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnSaveAs;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnOpenField;
-        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label4;
     }
 }
