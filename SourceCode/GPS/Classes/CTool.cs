@@ -9,7 +9,9 @@ namespace AgOpenGPS
     public class CTool
     {
         private readonly FormGPS mf;
-
+        public int productEnable = 0;
+        public int targetRate = 0;
+        public int targetFlowRate = 0;
         public double width, halfWidth,contourWidth;
         public double farLeftPosition = 0;
         public double farLeftSpeed = 0;
@@ -52,7 +54,7 @@ namespace AgOpenGPS
 
         public int zones;
         public int[] zoneRanges = new int[9];
-
+        
         //Constructor called by FormGPS
         public CTool(FormGPS _f)
         {

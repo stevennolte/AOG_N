@@ -215,6 +215,11 @@ namespace AgOpenGPS
         /// </summary>
         public CAHRS ahrs;
 
+        private void lblFieldStatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
         /// <summary>
         /// Recorded Path
         /// </summary>
@@ -506,13 +511,8 @@ namespace AgOpenGPS
 
             hotkeys = Properties.Settings.Default.setKey_hotkeys.ToCharArray();
         }
-        public void button1_Click(object sender, EventArgs e)
-        {
-            using (FormSpray form = new FormSpray())
-            {
-                form.ShowDialog(this);
-            }
-        }
+        
+       
 
         private void FormGPS_FormClosing(object sender, FormClosingEventArgs e)
         {

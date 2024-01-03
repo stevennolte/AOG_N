@@ -745,6 +745,11 @@ namespace AgOpenGPS
             //out serial to autosteer module  //indivdual classes load the distance and heading deltas 
             SendPgnToLoop(p_254.pgn);
 
+
+            p_151.pgn[p_151.productEnable] = (byte)(tool.productEnable);
+            p_151.pgn[p_151.targetRateLowByte] = unchecked((byte)(tool.targetRate));
+            p_151.pgn[p_151.targetRateHighByte] = unchecked((byte)(tool.targetRate >> 8));
+            SendPgnToLoop(p_151.pgn);
             //for average cross track error
             if (guidanceLineDistanceOff < 29000)
             {

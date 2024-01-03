@@ -534,6 +534,12 @@ namespace AgOpenGPS
             form.Show(this);
 
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form f = Application.OpenForms["FormSpray"];
+            Form form = new FormSpray(this);
+            form.Show(this);
+        }
         private void stripBtnConfig_Click(object sender, EventArgs e)
         {
             if (isTT)
