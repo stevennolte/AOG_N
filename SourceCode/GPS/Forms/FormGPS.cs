@@ -1,5 +1,6 @@
 ﻿//Please, if you use this, share the improvements
 
+using AgOpenGPS.Forms;
 using AgOpenGPS.Properties;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
@@ -206,6 +207,8 @@ namespace AgOpenGPS
         /// Resource manager for gloabal strings
         /// </summary>
         public ResourceManager _rm;
+
+       
 
         /// <summary>
         /// Heading, Roll, Pitch, GPS, Properties
@@ -502,6 +505,13 @@ namespace AgOpenGPS
             hotkeys = new char[19];
 
             hotkeys = Properties.Settings.Default.setKey_hotkeys.ToCharArray();
+        }
+        public void button1_Click(object sender, EventArgs e)
+        {
+            using (FormSpray form = new FormSpray())
+            {
+                form.ShowDialog(this);
+            }
         }
 
         private void FormGPS_FormClosing(object sender, FormClosingEventArgs e)
