@@ -1,5 +1,6 @@
 ﻿//Please, if you use this, share the improvements
 
+using AgOpenGPS.Forms;
 using AgOpenGPS.Properties;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
@@ -206,6 +207,8 @@ namespace AgOpenGPS
         /// Resource manager for gloabal strings
         /// </summary>
         public ResourceManager _rm;
+
+        
 
         /// <summary>
         /// Heading, Roll, Pitch, GPS, Properties
@@ -645,6 +648,14 @@ namespace AgOpenGPS
             //panel1.SendToBack();
             timer2.Enabled = false;
             timer2.Dispose();
+        }
+
+        public void button1_Click(object sender, EventArgs e)
+        {
+            using (FormSpray form = new FormSpray())
+            {
+                form.ShowDialog(this);
+            }
         }
 
         public bool KeypadToNUD(NumericUpDown sender, Form owner)
