@@ -30,6 +30,40 @@ C:\Users\steve\Documents\GitHub\AgOpenGPS\SourceCode\AgIO\Source\obj\Debug\AgIO.
 C:\Users\steve\Documents\GitHub\AgOpenGPS\SourceCode\AgIO\Source\obj\Debug\AgIO.csproj.CopyComplete
 C:\Users\steve\Documents\GitHub\AgOpenGPS\SourceCode\AgIO\Source\obj\Debug\AgIO.exe
 C:\Users\steve\Documents\GitHub\AgOpenGPS\SourceCode\AgIO\Source\obj\Debug\AgIO.pdb
+<<<<<<< HEAD
+C:\Users\NolteS\Documents\GitHub\AOG_N\AgOpenGPS_v5\AgIO.exe.config
+C:\Users\NolteS\Documents\GitHub\AOG_N\AgOpenGPS_v5\AgIO.exe
+C:\Users\NolteS\Documents\GitHub\AOG_N\AgOpenGPS_v5\AgIO.pdb
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.csproj.AssemblyReference.cache
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.csproj.SuggestedBindingRedirects.cache
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormCommPicker.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormCommSaver.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormCommSetGPS.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormSerialMonitor.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormGPSData.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormKeyboard.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormLoop.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormNtrip.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormNumeric.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormRadio.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormRadioChannel.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormSource.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormSerialPass.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormEthernet.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormUDPMonitor.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormPGN.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormYes.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormYesNo.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormTimedMessage.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.FormUDP.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.Properties.Resources.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.gStr.resources
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.csproj.GenerateResource.cache
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.csproj.CoreCompileInputs.cache
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.csproj.CopyComplete
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.exe
+C:\Users\NolteS\Documents\GitHub\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.pdb
+=======
 C:\Users\NolteS\Documents\Github\AOG_N\AgOpenGPS_v5\AgIO.exe.config
 C:\Users\NolteS\Documents\Github\AOG_N\AgOpenGPS_v5\AgIO.exe
 C:\Users\NolteS\Documents\Github\AOG_N\AgOpenGPS_v5\AgIO.pdb
@@ -61,3 +95,4 @@ C:\Users\NolteS\Documents\Github\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.csp
 C:\Users\NolteS\Documents\Github\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.csproj.CopyComplete
 C:\Users\NolteS\Documents\Github\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.exe
 C:\Users\NolteS\Documents\Github\AOG_N\SourceCode\AgIO\Source\obj\Debug\AgIO.pdb
+>>>>>>> c4e356ae9af2b1b687bb91c2190890f584466f7c

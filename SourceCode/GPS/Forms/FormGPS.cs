@@ -208,12 +208,21 @@ namespace AgOpenGPS
         /// </summary>
         public ResourceManager _rm;
 
+<<<<<<< HEAD
+       
+=======
         
+>>>>>>> c4e356ae9af2b1b687bb91c2190890f584466f7c
 
         /// <summary>
         /// Heading, Roll, Pitch, GPS, Properties
         /// </summary>
         public CAHRS ahrs;
+
+        private void lblFieldStatus_Click(object sender, EventArgs e)
+        {
+
+        }
 
         /// <summary>
         /// Recorded Path
@@ -506,6 +515,8 @@ namespace AgOpenGPS
 
             hotkeys = Properties.Settings.Default.setKey_hotkeys.ToCharArray();
         }
+        
+       
 
         private void FormGPS_FormClosing(object sender, FormClosingEventArgs e)
         {
