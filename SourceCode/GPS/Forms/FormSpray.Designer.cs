@@ -31,13 +31,16 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.aGauge1 = new System.Windows.Forms.AGauge();
             this.button1 = new System.Windows.Forms.Button();
+<<<<<<< HEAD
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+=======
+>>>>>>> c4e356ae9af2b1b687bb91c2190890f584466f7c
             this.SuspendLayout();
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(205, 316);
+            this.progressBar1.Location = new System.Drawing.Point(135, 223);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(100, 23);
             this.progressBar1.TabIndex = 1;
@@ -88,6 +91,7 @@
             // 
             // button1
             // 
+<<<<<<< HEAD
             this.button1.Location = new System.Drawing.Point(41, 38);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(134, 35);
@@ -107,6 +111,16 @@
             0,
             0,
             0});
+=======
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Location = new System.Drawing.Point(39, 50);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(171, 45);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Product Enable";
+            this.button1.UseVisualStyleBackColor = false;
+>>>>>>> c4e356ae9af2b1b687bb91c2190890f584466f7c
             // 
             // FormSpray
             // 
@@ -115,13 +129,19 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(876, 450);
+<<<<<<< HEAD
             this.Controls.Add(this.numericUpDown1);
+=======
+>>>>>>> c4e356ae9af2b1b687bb91c2190890f584466f7c
             this.Controls.Add(this.button1);
             this.Controls.Add(this.aGauge1);
             this.Controls.Add(this.progressBar1);
             this.Name = "FormSpray";
             this.Text = "Form1";
+<<<<<<< HEAD
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+=======
+>>>>>>> c4e356ae9af2b1b687bb91c2190890f584466f7c
             this.ResumeLayout(false);
 
         }
@@ -130,6 +150,9 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.AGauge aGauge1;
         private System.Windows.Forms.Button button1;
+<<<<<<< HEAD
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+=======
+>>>>>>> c4e356ae9af2b1b687bb91c2190890f584466f7c
     }
 }

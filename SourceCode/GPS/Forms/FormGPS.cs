@@ -208,7 +208,11 @@ namespace AgOpenGPS
         /// </summary>
         public ResourceManager _rm;
 
+<<<<<<< HEAD
        
+=======
+        
+>>>>>>> c4e356ae9af2b1b687bb91c2190890f584466f7c
 
         /// <summary>
         /// Heading, Roll, Pitch, GPS, Properties
@@ -655,6 +659,14 @@ namespace AgOpenGPS
             //panel1.SendToBack();
             timer2.Enabled = false;
             timer2.Dispose();
+        }
+
+        public void button1_Click(object sender, EventArgs e)
+        {
+            using (FormSpray form = new FormSpray())
+            {
+                form.ShowDialog(this);
+            }
         }
 
         public bool KeypadToNUD(NumericUpDown sender, Form owner)

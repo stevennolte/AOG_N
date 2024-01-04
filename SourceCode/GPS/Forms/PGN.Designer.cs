@@ -432,6 +432,16 @@ namespace AgOpenGPS
                                         0, 0, 0, 0, 0, 0, 0, 0,
                                         0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
 
+<<<<<<< HEAD
+=======
+        public class CPGN_96
+        {
+            public byte[] pgn = new byte[] { 0x80, 0x81, 0x7f, 0x96, 24,
+                                        0, 0, 0, 0, 0, 0, 0, 0,
+                                        0, 0, 0, 0, 0, 0, 0, 0,
+                                        0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
+            
+>>>>>>> c4e356ae9af2b1b687bb91c2190890f584466f7c
         }
 
         public class CPGN_97

@@ -732,9 +732,15 @@
             this.btnResetSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetSim.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.btnResetSim.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+<<<<<<< HEAD
             this.btnResetSim.Location = new System.Drawing.Point(502, 4);
             this.btnResetSim.Name = "btnResetSim";
             this.btnResetSim.Size = new System.Drawing.Size(93, 31);
+=======
+            this.btnResetSim.Location = new System.Drawing.Point(506, 4);
+            this.btnResetSim.Name = "btnResetSim";
+            this.btnResetSim.Size = new System.Drawing.Size(89, 31);
+>>>>>>> c4e356ae9af2b1b687bb91c2190890f584466f7c
             this.btnResetSim.TabIndex = 164;
             this.btnResetSim.Text = "Reset";
             this.btnResetSim.UseVisualStyleBackColor = false;
@@ -748,7 +754,11 @@
             this.btnResetSteerAngle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetSteerAngle.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.btnResetSteerAngle.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+<<<<<<< HEAD
             this.btnResetSteerAngle.Location = new System.Drawing.Point(442, 4);
+=======
+            this.btnResetSteerAngle.Location = new System.Drawing.Point(446, 4);
+>>>>>>> c4e356ae9af2b1b687bb91c2190890f584466f7c
             this.btnResetSteerAngle.Name = "btnResetSteerAngle";
             this.btnResetSteerAngle.Size = new System.Drawing.Size(53, 31);
             this.btnResetSteerAngle.TabIndex = 162;
@@ -773,10 +783,17 @@
             this.hsbarSteerAngle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hsbarSteerAngle.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.hsbarSteerAngle.LargeChange = 20;
+<<<<<<< HEAD
             this.hsbarSteerAngle.Location = new System.Drawing.Point(253, 1);
             this.hsbarSteerAngle.Maximum = 800;
             this.hsbarSteerAngle.Name = "hsbarSteerAngle";
             this.hsbarSteerAngle.Size = new System.Drawing.Size(185, 37);
+=======
+            this.hsbarSteerAngle.Location = new System.Drawing.Point(255, 1);
+            this.hsbarSteerAngle.Maximum = 800;
+            this.hsbarSteerAngle.Name = "hsbarSteerAngle";
+            this.hsbarSteerAngle.Size = new System.Drawing.Size(187, 37);
+>>>>>>> c4e356ae9af2b1b687bb91c2190890f584466f7c
             this.hsbarSteerAngle.TabIndex = 179;
             this.hsbarSteerAngle.Value = 400;
             this.hsbarSteerAngle.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hsbarSteerAngle_Scroll);
@@ -789,7 +806,11 @@
             this.hsbarStepDistance.Location = new System.Drawing.Point(1, 1);
             this.hsbarStepDistance.Minimum = -25;
             this.hsbarStepDistance.Name = "hsbarStepDistance";
+<<<<<<< HEAD
             this.hsbarStepDistance.Size = new System.Drawing.Size(185, 37);
+=======
+            this.hsbarStepDistance.Size = new System.Drawing.Size(187, 37);
+>>>>>>> c4e356ae9af2b1b687bb91c2190890f584466f7c
             this.hsbarStepDistance.TabIndex = 178;
             this.hsbarStepDistance.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hsbarStepDistance_Scroll);
             // 
@@ -1526,7 +1547,11 @@
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+<<<<<<< HEAD
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+=======
+            this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
+>>>>>>> c4e356ae9af2b1b687bb91c2190890f584466f7c
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 127F));
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panelSim.Controls.Add(this.hsbarSteerAngle, 2, 0);
@@ -1551,7 +1576,11 @@
             this.btnSimSetSpeedToZero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSimSetSpeedToZero.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.btnSimSetSpeedToZero.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+<<<<<<< HEAD
             this.btnSimSetSpeedToZero.Location = new System.Drawing.Point(190, 4);
+=======
+            this.btnSimSetSpeedToZero.Location = new System.Drawing.Point(192, 4);
+>>>>>>> c4e356ae9af2b1b687bb91c2190890f584466f7c
             this.btnSimSetSpeedToZero.Name = "btnSimSetSpeedToZero";
             this.btnSimSetSpeedToZero.Size = new System.Drawing.Size(59, 31);
             this.btnSimSetSpeedToZero.TabIndex = 453;
@@ -2502,6 +2531,7 @@
             // 
             // button1
             // 
+<<<<<<< HEAD
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.Cursor = System.Windows.Forms.Cursors.Cross;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
@@ -2509,6 +2539,13 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(71, 46);
             this.button1.TabIndex = 505;
+=======
+            this.button1.Location = new System.Drawing.Point(263, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 43);
+            this.button1.TabIndex = 505;
+            this.button1.Text = "button1";
+>>>>>>> c4e356ae9af2b1b687bb91c2190890f584466f7c
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
