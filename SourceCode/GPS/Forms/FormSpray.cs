@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace AgOpenGPS.Forms
         private readonly FormGPS mf = null;
         Timer t = new Timer();
         public int productEnable = 0;
+        
         public FormSpray(Form callingForm)
         {
             mf = callingForm as FormGPS;
@@ -36,6 +38,17 @@ namespace AgOpenGPS.Forms
                 button1.BackColor = Color.Gray;
             }
             mf.tool.targetRate = (int)(numericUpDown1.Value*10);
+
+            byte cnt = 0;
+            for (int i = 0; i < 64; i++)
+            {
+                if (mf.section[i].isSectionOn)
+                {
+                   cnt++;
+                }
+            }
+            mf.tool.rowsActive = cnt;
+            
         }                
 
         private void button2_Click(object sender, EventArgs e)
